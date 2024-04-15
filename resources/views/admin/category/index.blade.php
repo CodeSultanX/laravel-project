@@ -1,4 +1,4 @@
-@extends('personal.layouts.main')
+@extends('admin.layouts.main')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -11,7 +11,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">Главная</a></li>
+                          <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                             <li class="breadcrumb-item active">Категорий </li>
                         </ol>
                     </div>
@@ -24,7 +24,7 @@
             <!-- /.card-header -->
             <div class="row">
               <div class="col-1 mb-3">
-                <a href="{{ route('personal.comment.create') }}"  class = "btn btn-primary">Добавить</a>
+                <a href="{{ route('admin.category.create') }}"  class = "btn btn-primary">Добавить</a>
               </div>
           </div>
           <div class="row">
@@ -40,14 +40,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($comments as $comment )
+                      @foreach ($categories as $category )
                           <tr>
-                              <td>{{ $comment->id }}</td>
-                              <td>{{ $comment->title }}</td>
-                              <td><a href="{{ route('personal.comment.show',$comment->id) }}"><i class="fa fa-eye"></i></a></td>
-                              <td><a href="{{ route('personal.comment.edit',$comment->id) }}"><i class=" fas fa-pencil-alt text-success"></i></a></td>
+                              <td>{{ $category->id }}</td>
+                              <td>{{ $category->title }}</td>
+                              <td><a href="{{ route('admin.category.show',$category->id) }}"><i class="fa fa-eye"></i></a></td>
+                              <td><a href="{{ route('admin.category.edit',$category->id) }}"><i class=" fas fa-pencil-alt text-success"></i></a></td>
                               <td>
-                                  <form action="{{ route('personal.comment.delete',$comment->id) }}" method="POST" >
+                                  <form action="{{ route('admin.category.delete',$category->id) }}" method="POST" >
                                       @csrf
                                       @method('DELETE')
                                       <button type="submit" class="border-0 bg-transparent text-danger"><i class="fa fa-trash"></i></button>
